@@ -166,6 +166,7 @@ public class MapperMgr
             Object object = null;
             try {
                 object = method.invoke(mapper, args);
+                sqlSession.commit();
             } catch(Exception e) {
                 sqlSession.rollback();
             } finally {
@@ -188,8 +189,6 @@ public class MapperMgr
 可以看到我将mapper接口进行拦截，并且执行了`sqlSession.rollback()`和`sqlSession.close()`
 
 这样就可以只将mapper实现类暴露给使用方，不需要使用方去管理sqlSession的关闭和回退等，只需要拿到mapper来执行即可。
-
-（我在配置文件中开启了autocommit，所以不需要执行`sqlsession.commit()`）
 
 
 
