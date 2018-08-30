@@ -225,7 +225,7 @@ public class MapperMgr
   </environments>
   <databaseIdProvider type="DB_VENDOR">
     <property name="MySQL" value="mysql"/>
-    <property name="Sybase" value="sybase"/>
+    <property name="Adaptive Server Enterprise" value="sybase"/>
   </databaseIdProvider>
   <mappers>
     <package name="xxx.xxx.mybatis.resource.mapper"/>
