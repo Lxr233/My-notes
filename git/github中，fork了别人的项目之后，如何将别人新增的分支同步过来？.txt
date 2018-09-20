@@ -1,0 +1,28 @@
+# 1.将项目B clone 到本地
+git clone -b master 项目B的git地址
+
+# 2.将项目A的git地址，添加至本地的remote
+git remote add upstream 项目A的git地址
+
+# 3.在本地新建一个分支，该分支的名称最好与项目A中新增的那个分支的名称相同以便区分
+git checkout -b 新分支名称
+
+# 4.从项目A中将新分支的内容 pull 到本地
+git pull upstream 新分支名称
+
+# 5.将 pull 下来的分支 push 到项目B 中去
+git push origin 新分支名称
+其中，上面的 3 和 4 两步可以合并为下面的这一步：
+
+git checkout -b 新分支名称 upstream/新分支名称
+
+以上过程，总的来看，就是将项目A的分支先pull到本地，再从地本push到项目B中，即把本地当作一个中间桥梁的作用
+
+
+**********
+上面的方法会自动合并，并不是很好用
+**********
+
+git fetch origin 远程分支名x:本地分支名x
+
+使用该方式会在本地新建分支x，但是不会自动切换到该本地分支x，需要手动checkout。
